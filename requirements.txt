@@ -1,24 +1,37 @@
-#Utilities
+# #Utilities
+# numpy
+# pandas
+
+# # Face Regonition
+# scikit-learn
+# # dlib-bin #(face rectange)
+# # dlib-19.24.99-cp312-cp312-win_amd64.whl
+
+# git+https://github.com/ageitgey/face_recognition_models
+# setuptools<70.0.0
+
+# #databse
+# supabase
+# bcrypt
+
+# segno
+# pillow
+
+# streamlit
+
+
+# librosa
+# resemblyzer
+streamlit
+supabase
+postgrest
 numpy
 pandas
-
-# Face Regonition
-scikit-learn
-dlib-bin #(face rectange)
-dlib-19.24.99-cp312-cp312-win_amd64.whl
-
-git+https://github.com/ageitgey/face_recognition_models
-setuptools<70.0.0
-
-#databse
-supabase
+opencv-python-headless
+Pillow
 bcrypt
-
 segno
-pillow
-
-streamlit
-
-
 librosa
 resemblyzer
+scikit-learn
+setuptools<70
