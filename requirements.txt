@@ -12,13 +12,14 @@ setuptools<70.0.0
 
 supabase
 bcrypt
+opencv-python
 
 
 
 segno
 pillow
 
-
+face_recognition_models
 
 librosa
 resemblyzer

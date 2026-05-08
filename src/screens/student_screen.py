@@ -1,3 +1,4 @@
+
 import streamlit as st
 
 from src.ui.base_layout import style_background_dashboard, style_base_layout
@@ -114,7 +115,7 @@ def student_screen():
     photo_source = st.camera_input("Position your face in the center")
 
     if photo_source:
-        img = np.array(Image.open(photo_source))
+        img = np.array(Image.open(photo_source).convert('RGB'))
 
         with st.spinner('AI is scanning..'):
             detected, all_ids, num_faces = predict_attendance(img)
@@ -158,7 +159,7 @@ def student_screen():
             if st.button('Create Account', type='primary'):
                 if new_name:
                     with st.spinner('Creating profile..'):
-                        img = np.array(Image.open(photo_source))
+                        img = np.array(Image.open(photo_source).convert('RGB'))
                         encodings= get_face_embeddings(img)
                         if encodings:
                             face_emb = encodings[0].tolist()

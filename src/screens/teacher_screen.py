@@ -340,19 +340,17 @@ def teacher_screen_login():
 
 def register_teacher(teacher_username, teacher_name, teacher_pass, teacher_pass_confirm):
     if not teacher_username or not teacher_name or not teacher_pass:
-        return False, "All fields are required!"
+        return False, "All Fields are required!"
     if check_teacher_exists(teacher_username):
         return False, "Username already taken"
     if teacher_pass != teacher_pass_confirm:
-        return False, "Passwords do not match"
+        return False, "Password doesn't match"
     
     try:
         create_teacher(teacher_username, teacher_pass, teacher_name)
-        return True, "Successfully created! Login now."
+        return True, "Sucessfully Created! Login Now"
     except Exception as e:
-        # Show the actual error instead of hiding it
-        return False, f"Unexpected Error: {e}"
-
+        return False, "Unexpected Error!"
     
 
 def teacher_screen_register():
@@ -395,7 +393,6 @@ def teacher_screen_register():
                 st.rerun()
             else:
                 st.error(message)
-
 
 
     with btnc2:

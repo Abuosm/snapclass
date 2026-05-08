@@ -26,29 +26,25 @@ def load_dlib_models():
 
 def get_face_embeddings(image_np):
     detector, sp, facerec = load_dlib_models()
-
-    # Ensure image is uint8
+    
+    # Ensure image_np is uint8 and contiguous
+    if not isinstance(image_np, np.ndarray):
+        image_np = np.array(image_np)
     if image_np.dtype != np.uint8:
         image_np = image_np.astype(np.uint8)
-
-    # Validate shape
-    if len(image_np.shape) == 2:  # grayscale
-        pass
-    elif len(image_np.shape) == 3 and image_np.shape[2] == 3:  # RGB
-        pass
-    else:
-        raise ValueError("Image must be 8bit gray or RGB")
-
+    if not image_np.flags['C_CONTIGUOUS']:
+        image_np = np.ascontiguousarray(image_np)
+        
     faces = detector(image_np, 1)
 
-    encodings = []
+    encodings= []
+
     for face in faces:
         shape = sp(image_np, face)
-        face_descriptor = facerec.compute_face_descriptor(image_np, shape, 1)
+        face_descriptor = facerec.compute_face_descriptor(image_np, shape, 1) #128 embedding
+
         encodings.append(np.array(face_descriptor))
-
     return encodings
-
 
 @st.cache_resource
 def get_trained_model():
