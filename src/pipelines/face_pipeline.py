@@ -111,3 +111,6 @@ def train_classifier():
 
 def predict_attendance(*args, **kwargs):
     return {}, [], 0
+
+def get_face_embeddings(*args, **kwargs):
+    return []
